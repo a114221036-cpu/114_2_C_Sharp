@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q2\\Review_Q2\\Review_Q2.csproj": {}
+    "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q3\\Review_Q3\\Review_Q3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q2\\Review_Q2\\Review_Q2.csproj": {
+    "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q3\\Review_Q3\\Review_Q3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q2\\Review_Q2\\Review_Q2.csproj",
-        "projectName": "Review_Q2",
-        "projectPath": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q2\\Review_Q2\\Review_Q2.csproj",
+        "projectUniqueName": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q3\\Review_Q3\\Review_Q3.csproj",
+        "projectName": "Review_Q3",
+        "projectPath": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q3\\Review_Q3\\Review_Q3.csproj",
         "packagesPath": "C:\\Users\\m303\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q2\\Review_Q2\\obj\\",
+        "outputPath": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115-03-05\\Review_Q3\\Review_Q3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
