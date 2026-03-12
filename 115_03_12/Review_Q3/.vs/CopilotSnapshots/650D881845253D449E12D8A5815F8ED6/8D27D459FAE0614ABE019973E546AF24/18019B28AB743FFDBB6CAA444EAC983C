@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Review_Q3
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // 按鈕：產生號碼（UI 事件 stub）
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            // TODO: 在此實作產生號碼邏輯並設定 txtNum1..txtNum5 的 Text
+        }
+
+        // 按鈕：開獎號碼（檔案讀取／顯示 stub）
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            // TODO: 在此實作從檔案讀取開獎號碼並填入 listBoxFileNumbers
+        }
+
+        // 按鈕：離開
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // 在 panelNumbers 上繪製紅色邊框（模擬草圖紅色矩形）
+        private void panelNumbers_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            using (var pen = new Pen(Color.Red, 2))
+            {
+                g.DrawRectangle(pen, 0, 0, panelNumbers.Width - 1, panelNumbers.Height - 1);
+            }
+        }
+
+        // 在 panelResult 上繪製虛線邊框
+        private void panelResult_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            using (var pen = new Pen(Color.Black, 1))
+            {
+                pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                g.DrawRectangle(pen, 0, 0, panelResult.Width - 1, panelResult.Height - 1);
+            }
+        }
+    }
+}
