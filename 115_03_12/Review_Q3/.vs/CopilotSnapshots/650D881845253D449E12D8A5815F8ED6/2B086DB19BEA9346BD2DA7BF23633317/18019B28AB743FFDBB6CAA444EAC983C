@@ -1,0 +1,168 @@
+﻿using System;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace Review_Q3
+{
+    public partial class Form1 : Form
+    {
+        // 陣列儲存開獎號碼與產生的號碼
+        private int[] lotteryNumbers = new int[5];
+        private int[] myNumbers = new int[5];
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // Step1: 開獎號碼按鈕事件: 選取檔案並讀取開獎號碼
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files|*.txt|All files|*.*";
+            ofd.Title = "選擇開獎號碼檔案 (每行 5 個號碼，用逗號或空白分隔)";
+
+            if (ofd.ShowDialog() != DialogResult.OK)
+            {
+                return; // 使用者取消
+            }
+
+            try
+            {
+                listBoxLottery.Items.Clear();
+
+                using (StreamReader sr = new StreamReader(ofd.FileName))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (string.IsNullOrWhiteSpace(line))
+                            continue;
+
+                        listBoxLottery.Items.Add(line);
+                    }
+                }
+
+                // 讀完檔案後，啟用產生號碼按鈕
+                btnGenerate.Enabled = true;
+
+                MessageBox.Show("檔案讀取完成，可以按「產生號碼」。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("讀取檔案發生錯誤: " + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Step2: 產生號碼按鈕事件: 產生不重複隨機號碼、顯示、比對
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            // 先簡單從 listBoxLottery 取得第一行作為開獎號碼（示範）
+            if (listBoxLottery.Items.Count == 0)
+            {
+                MessageBox.Show("請先讀取開獎號碼檔案。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 解析第一行為開獎號碼（支援逗號或空白分隔）
+            string first = listBoxLottery.Items[0].ToString();
+            string[] parts = first.Split(new char[] { ',', ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts.Length < 5)
+            {
+                MessageBox.Show("開獎號碼格式不正確，請確認第一行至少有 5 個號碼。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                int v = 0;
+                int.TryParse(parts[i], out v);
+                lotteryNumbers[i] = v;
+            }
+
+            // 產生不重複的 5 個亂數，假設號碼範圍為 1~49
+            Random rnd = new Random();
+            int idx = 0;
+            while (idx < 5)
+            {
+                int candidate = rnd.Next(1, 50); // 1..49
+                bool exist = false;
+                for (int j = 0; j < idx; j++)
+                {
+                    if (myNumbers[j] == candidate)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+
+                if (!exist)
+                {
+                    myNumbers[idx] = candidate;
+                    idx++;
+                }
+            }
+
+            // 顯示產生的號碼在介面上
+            txtNum1.Text = myNumbers[0].ToString();
+            txtNum2.Text = myNumbers[1].ToString();
+            txtNum3.Text = myNumbers[2].ToString();
+            txtNum4.Text = myNumbers[3].ToString();
+            txtNum5.Text = myNumbers[4].ToString();
+
+            // 比對號碼，計算中獎數量
+            int matchCount = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (myNumbers[i] == lotteryNumbers[j])
+                    {
+                        matchCount++;
+                    }
+                }
+            }
+
+            // 判定獎項等級（簡單範例）
+            string prize = "未中獎";
+            if (matchCount == 5) prize = "頭獎";
+            else if (matchCount == 4) prize = "二獎";
+            else if (matchCount == 3) prize = "三獎";
+            else if (matchCount == 2) prize = "四獎";
+            else if (matchCount == 1) prize = "五獎";
+
+            // 輸出比對結果到 labelResult
+            labelResult.Text = string.Format("比對結果: 共中 {0} 個號碼\r\n獎項: {1}", matchCount, prize);
+        }
+
+        // Step3: 離開按鈕
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // 繪製紅色外框
+        private void panelNumbers_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            using (var pen = new Pen(Color.Red, 2))
+            {
+                g.DrawRectangle(pen, 0, 0, panelNumbers.Width - 1, panelNumbers.Height - 1);
+            }
+        }
+
+        // 繪製虛線外框
+        private void panelResult_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            using (var pen = new Pen(Color.Black, 1))
+            {
+                pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                g.DrawRectangle(pen, 0, 0, panelResult.Width - 1, panelResult.Height - 1);
+            }
+        }
+    }
+}
