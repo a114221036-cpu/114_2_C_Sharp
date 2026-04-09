@@ -1,0 +1,187 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace Test_Score_List
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // 內部類別：封裝學號與分數
+        private class StudentScore
+        {
+            public string Id { get; set; }
+            public int Score { get; set; }
+        }
+
+        // 從檔案讀取學號與分數（每行格式："學號 分數"），並加入到傳入的列表中
+        private void ReadScores(List<StudentScore> scoresList)
+        {
+            string filePath = "TestScores.txt";
+            try
+            {
+                using (StreamReader reader = File.OpenText(filePath))
+                {
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        if (string.IsNullOrWhiteSpace(line))
+                            continue;
+
+                        // 以空白或 TAB 分割，第一個欄位視為學號，最後一個欄位視為分數
+                        string[] parts = line.Trim().Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (parts.Length < 2)
+                            continue; // 格式不正確，跳過
+
+                        string id = parts[0];
+                        string scoreText = parts[parts.Length - 1];
+                        if (int.TryParse(scoreText, out int score))
+                        {
+                            scoresList.Add(new StudentScore { Id = id, Score = score });
+                        }
+                        else
+                        {
+                            // 分數解析失敗，略過該行
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 顯示中文錯誤訊息
+                MessageBox.Show("讀取檔案時發生錯誤： " + ex.Message);
+            }
+        }
+
+        // 顯示學號與分數於 ListBox（格式："學號 分數"）
+        private void DisplayScores(List<StudentScore> scoresList)
+        {
+            testScoresListBox.Items.Clear();
+            foreach (var e in scoresList)
+            {
+                testScoresListBox.Items.Add(e.Id + " " + e.Score.ToString());
+            }
+        }
+
+        // 計算學生成績平均值（針對 Score 欄位）
+        private double Average(List<StudentScore> scoresList)
+        {
+            if (scoresList == null || scoresList.Count == 0)
+                return 0.0;
+            double sum = 0;
+            foreach (var e in scoresList)
+                sum += e.Score;
+            return sum / scoresList.Count;
+        }
+
+        // 計算大於平均的數量
+        private int AboveAverage(List<StudentScore> scoresList, double average)
+        {
+            if (scoresList == null || scoresList.Count == 0)
+                return 0;
+            int count = 0;
+            foreach (var e in scoresList)
+            {
+                if (e.Score > average)
+                    count++;
+            }
+            return count;
+        }
+
+        // 計算小於平均的數量
+        private int BelowAverage(List<StudentScore> scoresList)
+        {
+            if (scoresList == null || scoresList.Count == 0)
+                return 0;
+            double avg = Average(scoresList);
+            int count = 0;
+            foreach (var e in scoresList)
+            {
+                if (e.Score < avg)
+                    count++;
+            }
+            return count;
+        }
+
+        private void getScoresButton_Click(object sender, EventArgs e)
+        {
+            double averageScore;    // 儲存平均分數
+            int numAboveAverage;    // 高於平均的分數數量
+            int numBelowAverage;    // 低於平均的分數數量
+
+            // 建立 List 以存放學號與分數
+            List<StudentScore> scoresList = new List<StudentScore>();
+
+            // 從檔案讀取
+            ReadScores(scoresList);
+
+            // 顯示於 ListBox（學號 分數）
+            DisplayScores(scoresList);
+
+            // 計算並顯示平均
+            averageScore = Average(scoresList);
+            averageLabel.Text = averageScore.ToString("n1");
+
+            // 計算並顯示高於平均與低於平均數量
+            numAboveAverage = AboveAverage(scoresList, averageScore);
+            aboveAverageLabel.Text = numAboveAverage.ToString();
+
+            numBelowAverage = BelowAverage(scoresList);
+            belowAverageLabel.Text = numBelowAverage.ToString();
+        }
+
+        // 搜尋按鈕事件處理器（搜尋 ListBox 中的分數，ListBox 每項格式為 "學號 分數"）
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string input = searchTextBox.Text.Trim();
+            if (!int.TryParse(input, out int target))
+            {
+                searchResultLabel.Text = "分數不存在";
+                return;
+            }
+
+            for (int i = 0; i < testScoresListBox.Items.Count; i++)
+            {
+                string itemText = testScoresListBox.Items[i].ToString();
+                if (string.IsNullOrWhiteSpace(itemText))
+                    continue;
+
+                string[] parts = itemText.Trim().Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 2)
+                    continue;
+
+                string scoreText = parts[parts.Length - 1];
+                if (int.TryParse(scoreText, out int value) && value == target)
+                {
+                    searchResultLabel.Text = "位置：" + (i + 1).ToString();
+                    return;
+                }
+            }
+
+            searchResultLabel.Text = "分數不存在";
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            // 關閉表單
+            this.Close();
+        }
+
+        private void searchResultLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
