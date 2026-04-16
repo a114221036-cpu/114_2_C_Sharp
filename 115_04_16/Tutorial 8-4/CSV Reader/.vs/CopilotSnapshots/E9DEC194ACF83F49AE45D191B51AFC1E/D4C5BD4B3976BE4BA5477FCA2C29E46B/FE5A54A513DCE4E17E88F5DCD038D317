@@ -1,0 +1,105 @@
+﻿namespace CSV_Reader
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// 必要的設計工具變數。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清理所有正在使用的資源。
+        /// </summary>
+        /// <param name="disposing">如果應該處置受控資源，則為 true；否則為 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows 表單設計工具產生的程式碼
+
+        /// <summary>
+        /// 設計工具支援所需的方法 - 請勿使用程式碼編輯器修改
+        /// 這個方法的內容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            // 初始化列表框元件，用於顯示平均成績
+            this.averagesListBox = new System.Windows.Forms.ListBox();
+            // 初始化「取得成績」按鈕
+            this.getScoresButton = new System.Windows.Forms.Button();
+            // 初始化「結束」按鈕
+            this.exitButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // averagesListBox - 平均成績列表框
+            // 此控制項用於顯示從 CSV 檔案讀取的平均成績資料
+            // 
+            this.averagesListBox.FormattingEnabled = true;
+            this.averagesListBox.Location = new System.Drawing.Point(12, 15);
+            this.averagesListBox.Name = "averagesListBox";
+            // 調整列表框大小以容納字體大小為 18 的內容
+            this.averagesListBox.Size = new System.Drawing.Size(360, 180);
+            this.averagesListBox.TabIndex = 0;
+            // 設定字型大小為 18
+            this.averagesListBox.Font = new System.Drawing.Font("微軟正黑體", 18F);
+            // 
+            // getScoresButton - 「取得成績」按鈕
+            // 點擊此按鈕將打開 CSV 檔案選擇對話框，並讀取成績資料
+            // 
+            this.getScoresButton.Location = new System.Drawing.Point(50, 210);
+            this.getScoresButton.Name = "getScoresButton";
+            // 調整按鈕大小以容納更大的字體
+            this.getScoresButton.Size = new System.Drawing.Size(120, 50);
+            this.getScoresButton.TabIndex = 1;
+            this.getScoresButton.Text = "取得成績";
+            this.getScoresButton.UseVisualStyleBackColor = true;
+            // 設定按鈕字型大小為 18
+            this.getScoresButton.Font = new System.Drawing.Font("微軟正黑體", 18F);
+            this.getScoresButton.Click += new System.EventHandler(this.getScoresButton_Click);
+            // 
+            // exitButton - 「結束」按鈕
+            // 點擊此按鈕將關閉應用程式
+            // 
+            this.exitButton.Location = new System.Drawing.Point(202, 210);
+            this.exitButton.Name = "exitButton";
+            // 調整按鈕大小以容納更大的字體
+            this.exitButton.Size = new System.Drawing.Size(120, 50);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "結束";
+            this.exitButton.UseVisualStyleBackColor = true;
+            // 設定按鈕字型大小為 18
+            this.exitButton.Font = new System.Drawing.Font("微軟正黑體", 18F);
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // Form1 - CSV 讀取器主視窗
+            // 此表單提供使用者介面，用於讀取和顯示 CSV 格式的成績檔案
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            // 調整表單大小以容納所有調整後的元件
+            this.ClientSize = new System.Drawing.Size(384, 280);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.getScoresButton);
+            this.Controls.Add(this.averagesListBox);
+            this.Name = "Form1";
+            this.Text = "CSV 讀取器";
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        // 用於顯示計算出的平均成績
+        private System.Windows.Forms.ListBox averagesListBox;
+        // 用於觸發讀取 CSV 檔案的按鈕
+        private System.Windows.Forms.Button getScoresButton;
+        // 用於關閉應用程式的按鈕
+        private System.Windows.Forms.Button exitButton;
+    }
+}
+

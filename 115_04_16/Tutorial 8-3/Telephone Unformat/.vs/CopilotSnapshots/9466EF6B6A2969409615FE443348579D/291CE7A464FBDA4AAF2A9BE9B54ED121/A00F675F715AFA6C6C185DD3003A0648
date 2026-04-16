@@ -1,0 +1,107 @@
+﻿namespace Telephone_Unformat
+{
+    // 電話號碼格式轉換表單 - 使用者介面設計類
+    partial class Form1
+    {
+        /// <summary>
+        /// 必要的設計工具容器變數。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清理所有使用中的資源。
+        /// </summary>
+        /// <param name="disposing">若要釋放 Managed 資源，則為 true；否則為 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// 設計工具支援所需的方法 - 請勿使用程式碼編輯器修改此方法的內容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            // 初始化各個控制項
+            this.exitButton = new System.Windows.Forms.Button();
+            this.unformatButton = new System.Windows.Forms.Button();
+            this.instructionLabel = new System.Windows.Forms.Label();
+            this.numberTextBox = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            
+            // 
+            // exitButton（結束按鈕）
+            // 位置：右下方，用於關閉表單
+            this.exitButton.Location = new System.Drawing.Point(165, 130);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(100, 40);
+            this.exitButton.TabIndex = 7;
+            this.exitButton.Text = "結束";
+            this.exitButton.Font = new System.Drawing.Font("新細明體", 18F);
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            
+            // 
+            // unformatButton（移除格式按鈕）
+            // 位置：左下方，用於執行號碼去格式化操作
+            this.unformatButton.Location = new System.Drawing.Point(20, 130);
+            this.unformatButton.Name = "unformatButton";
+            this.unformatButton.Size = new System.Drawing.Size(100, 40);
+            this.unformatButton.TabIndex = 6;
+            this.unformatButton.Text = "移除格式";
+            this.unformatButton.Font = new System.Drawing.Font("新細明體", 18F);
+            this.unformatButton.UseVisualStyleBackColor = true;
+            this.unformatButton.Click += new System.EventHandler(this.unformatButton_Click);
+            
+            // 
+            // instructionLabel（說明標籤）
+            // 顯示使用者操作說明，位於表單頂部
+            this.instructionLabel.Location = new System.Drawing.Point(12, 12);
+            this.instructionLabel.Name = "instructionLabel";
+            this.instructionLabel.Size = new System.Drawing.Size(330, 70);
+            this.instructionLabel.TabIndex = 5;
+            this.instructionLabel.Text = "請輸入電話號碼，格式為 (XXX)XXX-XXXX，\r\n我將為您移除格式符號。";
+            this.instructionLabel.Font = new System.Drawing.Font("新細明體", 18F);
+            this.instructionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
+            // 
+            // numberTextBox（輸入文字框）
+            // 用於使用者輸入電話號碼的文字框
+            this.numberTextBox.Location = new System.Drawing.Point(50, 95);
+            this.numberTextBox.Name = "numberTextBox";
+            this.numberTextBox.Size = new System.Drawing.Size(230, 30);
+            this.numberTextBox.TabIndex = 4;
+            this.numberTextBox.Font = new System.Drawing.Font("新細明體", 18F);
+            
+            // 
+            // Form1（主表單）
+            // 電話號碼格式移除工具的主要視窗
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(354, 185);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.unformatButton);
+            this.Controls.Add(this.instructionLabel);
+            this.Controls.Add(this.numberTextBox);
+            this.Name = "Form1";
+            this.Text = "電話號碼格式轉換";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button unformatButton;
+        private System.Windows.Forms.Label instructionLabel;
+        private System.Windows.Forms.TextBox numberTextBox;
+    }
+}
+
