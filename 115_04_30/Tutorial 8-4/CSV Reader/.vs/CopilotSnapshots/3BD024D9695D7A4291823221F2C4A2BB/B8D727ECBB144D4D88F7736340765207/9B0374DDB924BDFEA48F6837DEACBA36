@@ -1,0 +1,113 @@
+﻿namespace CSV_Reader
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            // -----------------------------
+            // 元件初始化與屬性設定
+            // 以下以繁體中文詳細註解每個設定，並將文字改為繁體中文，字型統一為 18pt
+            // -----------------------------
+
+            this.averagesListBox = new System.Windows.Forms.ListBox();
+            this.getScoresButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+
+            // 
+            // averagesListBox
+            // 
+            // 註解：此 ListBox 顯示學生或項目的平均分數。
+            // 1) 設定字型為繁體中文常用字型 "Microsoft JhengHei"，大小 18pt，以利顯示中文。
+            // 2) 調整尺寸與位置以容納較大字型與較多項目。
+            this.averagesListBox.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.averagesListBox.FormattingEnabled = true;
+            this.averagesListBox.ItemHeight = 30; // 提升項目高度以配合 18pt 字型
+            this.averagesListBox.Location = new System.Drawing.Point(12, 12);
+            this.averagesListBox.Name = "averagesListBox";
+            this.averagesListBox.Size = new System.Drawing.Size(360, 184);
+            this.averagesListBox.TabIndex = 0;
+
+            // 
+            // getScoresButton
+            // 
+            // 註解：按下此按鈕以讀取 CSV 並計算、顯示分數。
+            // 1) 將按鈕文字改為繁體中文「取得成績」。
+            // 2) 增大按鈕尺寸與字型，並調整位置置於 ListBox 下方靠左。
+            this.getScoresButton.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.getScoresButton.Location = new System.Drawing.Point(40, 210);
+            this.getScoresButton.Name = "getScoresButton";
+            this.getScoresButton.Size = new System.Drawing.Size(140, 40);
+            this.getScoresButton.TabIndex = 1;
+            this.getScoresButton.Text = "取得成績";
+            this.getScoresButton.UseVisualStyleBackColor = true;
+            this.getScoresButton.Click += new System.EventHandler(this.getScoresButton_Click);
+
+            // 
+            // exitButton
+            // 
+            // 註解：按下此按鈕以關閉表單並結束程式。
+            // 1) 將按鈕文字改為繁體中文「離開」。
+            // 2) 增大按鈕尺寸與字型，並調整位置置於 ListBox 下方靠右。
+            this.exitButton.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.exitButton.Location = new System.Drawing.Point(232, 210);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(140, 40);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "離開";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+
+            // 
+            // Form1
+            // 
+            // 註解：設定主視窗屬性
+            // 1) 將標題改為繁體中文「CSV 讀取器」。
+            // 2) 設定表單的預設字型為 18pt，以確保所有未個別設定的元件使用一致的大字型顯示。
+            // 3) 調整表單大小以容納增大後的元件與按鈕。
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(384, 270);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.getScoresButton);
+            this.Controls.Add(this.averagesListBox);
+            this.Name = "Form1";
+            this.Text = "CSV 讀取器";
+
+            // 註解：完成配置，恢復表單佈局
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ListBox averagesListBox;
+        private System.Windows.Forms.Button getScoresButton;
+        private System.Windows.Forms.Button exitButton;
+    }
+}
+
