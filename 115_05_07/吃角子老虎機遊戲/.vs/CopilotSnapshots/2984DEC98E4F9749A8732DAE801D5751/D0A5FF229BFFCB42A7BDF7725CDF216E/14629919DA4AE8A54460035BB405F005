@@ -1,0 +1,250 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace 吃角子老虎機遊戲
+{
+    public partial class Form1 : Form
+    {
+        // 程式狀態變數
+        private Random rand;
+        private int n1, n2, n3;
+        private int prize;
+        private int balance;
+        private int totalDeposited;
+        private int totalSpins;
+        private int winCount;
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            // 初始化狀態
+            rand = new Random();
+            n1 = n2 = n3 = 0;
+            prize = 0;
+            balance = 0;
+            totalDeposited = 0;
+            totalSpins = 0;
+            winCount = 0;
+
+            // 初始化下注選單（固定項目）
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(new object[] { "$1", "$5", "$10", "$50" });
+            comboBox1.SelectedIndex = 0;
+
+            // 綁定選單變更事件以重新判斷旋轉按鈕
+            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+
+            // 初始化 pictureBox 顯示（若有 ImageList 就使用裡面的圖）
+            pictureBox1.Image = GetImageForNumber(0, pictureBox1.Width, pictureBox1.Height);
+            pictureBox2.Image = GetImageForNumber(0, pictureBox2.Width, pictureBox2.Height);
+            pictureBox3.Image = GetImageForNumber(0, pictureBox3.Width, pictureBox3.Height);
+
+            // 初始化 UI 文字
+            UpdateUi();
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateRotateButtonState();
+        }
+
+        private void label_totalSpins_Click(object sender, EventArgs e)
+        {
+            // 不需要實作
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            // 不需要實作
+        }
+
+        private void button_deposit_Click(object sender, EventArgs e)
+        {
+            // 驗證輸入為正整數
+            var txt = textBox_deposit.Text.Trim();
+            int v;
+            if (!int.TryParse(txt, out v) || v <= 0)
+            {
+                MessageBox.Show("請輸入有效的存入金額（必須為正整數）", "輸入錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 加入餘額與累計存入
+            balance += v;
+            totalDeposited += v;
+
+            // 清空輸入方塊
+            textBox_deposit.Text = string.Empty;
+
+            // 更新介面與按鈕狀態
+            UpdateUi();
+        }
+
+        private void textBox_deposit_TextChanged(object sender, EventArgs e)
+        {
+            // 不特別處理
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // 旋轉按鈕（執行遊戲流程）
+            int bet = GetSelectedBet();
+            if (bet <= 0) return;
+
+            if (balance < bet)
+            {
+                MessageBox.Show("餘額不足，無法下注", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UpdateRotateButtonState();
+                return;
+            }
+
+            // 從 balance 扣除下注金額
+            balance -= bet;
+
+            // 以亂數決定三個轉輪索引 (0..9)
+            n1 = rand.Next(0, 10);
+            n2 = rand.Next(0, 10);
+            n3 = rand.Next(0, 10);
+
+            // 設定 pictureBox 圖示（若舊圖不是 ImageList 的圖則釋放）
+            DisposeIfNotFromImageList(pictureBox1);
+            DisposeIfNotFromImageList(pictureBox2);
+            DisposeIfNotFromImageList(pictureBox3);
+
+            pictureBox1.Image = GetImageForNumber(n1, pictureBox1.Width, pictureBox1.Height);
+            pictureBox2.Image = GetImageForNumber(n2, pictureBox2.Width, pictureBox2.Height);
+            pictureBox3.Image = GetImageForNumber(n3, pictureBox3.Width, pictureBox3.Height);
+
+            // 計算獎金
+            prize = CalculatePrize(bet, n1, n2, n3);
+
+            // 將獎金加回 balance，並判定是否計入中獎次數
+            if (prize > 0)
+            {
+                balance += prize;
+                winCount += 1;
+            }
+
+            totalSpins += 1;
+
+            // 更新介面
+            UpdateUi();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // 輔助方法
+        private int GetSelectedBet()
+        {
+            if (comboBox1.SelectedItem == null) return 0;
+            var s = comboBox1.SelectedItem.ToString();
+            if (s.StartsWith("$")) s = s.Substring(1);
+            int v;
+            if (int.TryParse(s, out v)) return v;
+            return 0;
+        }
+
+        private int CalculatePrize(int bet, int a, int b, int c)
+        {
+            if (a == b && b == c) return bet * 10; // 頭獎
+            if (a == b || a == c || b == c) return bet * 2; // 普獎
+            return 0; // 未中獎
+        }
+
+        private void UpdateUi()
+        {
+            label_balance.Text = string.Format("餘額: ${0}", balance);
+            label1.Text = string.Format("本次獲得: ${0}", prize);
+
+            // 判斷旋轉按鈕狀態
+            UpdateRotateButtonState();
+        }
+
+        private void UpdateRotateButtonState()
+        {
+            int bet = GetSelectedBet();
+            if (balance == 0 || balance < bet)
+            {
+                button1.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
+        }
+
+        private Bitmap CreateNumberBitmap(int number, int width, int height)
+        {
+            if (width <= 0) width = 100;
+            if (height <= 0) height = 100;
+            Bitmap bmp = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+                string s = number.ToString();
+                using (Font f = new Font("微軟正黑體", Math.Max(12, Math.Min(width, height) / 2), FontStyle.Bold, GraphicsUnit.Pixel))
+                using (Brush br = new SolidBrush(Color.Black))
+                {
+                    SizeF sz = g.MeasureString(s, f);
+                    float x = (width - sz.Width) / 2f;
+                    float y = (height - sz.Height) / 2f;
+                    g.DrawString(s, f, br, x, y);
+                }
+            }
+            return bmp;
+        }
+
+        // 如果有 ImageList 並且包含編號對應的圖，回傳該圖；否則回傳以數字繪製的 Bitmap
+        private Image GetImageForNumber(int number, int width, int height)
+        {
+            try
+            {
+                if (this.imageList1 != null && this.imageList1.Images.Count > number)
+                {
+                    // ImageList 存放的是 Image，直接使用（不需 Dispose）
+                    return this.imageList1.Images[number];
+                }
+            }
+            catch
+            {
+                // 忽略任何取圖錯誤，改用繪製
+            }
+
+            return CreateNumberBitmap(number, width, height);
+        }
+
+        private void DisposeIfNotFromImageList(PictureBox pb)
+        {
+            if (pb == null) return;
+            if (pb.Image == null) return;
+            // 如果 imageList1 包含此 Image 的參考，則不要 Dispose
+            if (this.imageList1 != null)
+            {
+                foreach (Image img in this.imageList1.Images)
+                {
+                    if (object.ReferenceEquals(img, pb.Image))
+                    {
+                        pb.Image = null; // 不 Dispose
+                        return;
+                    }
+                }
+            }
+
+            // 否則釋放
+            var old = pb.Image;
+            pb.Image = null;
+            old.Dispose();
+        }
+    }
+}

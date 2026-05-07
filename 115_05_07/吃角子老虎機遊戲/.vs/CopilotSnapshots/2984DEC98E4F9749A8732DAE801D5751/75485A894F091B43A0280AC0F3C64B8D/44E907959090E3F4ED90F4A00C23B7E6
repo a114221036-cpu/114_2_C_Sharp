@@ -1,0 +1,199 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace 吃角子老虎機遊戲
+{
+    public partial class Form1 : Form
+    {
+        // 程式狀態變數
+        private Random rand;
+        private int n1, n2, n3;
+        private int prize;
+        private int balance;
+        private int totalDeposited;
+        private int totalSpins;
+        private int winCount;
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            // 初始化狀態
+            rand = new Random();
+            n1 = n2 = n3 = 0;
+            prize = 0;
+            balance = 0;
+            totalDeposited = 0;
+            totalSpins = 0;
+            winCount = 0;
+
+            // 設定下注選單（固定項目）
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(new object[] { "$1", "$5", "$10", "$50" });
+            comboBox1.SelectedIndex = 0;
+
+            // 綁定事件
+            button_deposit.Click += Button_deposit_Click;
+            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            button1.Click += Button1_Click; // 旋轉
+            button2.Click += Button2_Click; // 離開
+
+            // 初始介面
+            UpdateUi();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 選擇變更時，重新判斷旋轉按鈕是否可用
+            UpdateRotateButtonState();
+        }
+
+        private void Button_deposit_Click(object sender, EventArgs e)
+        {
+            // 驗證輸入為正整數
+            var txt = textBox_deposit.Text.Trim();
+            int v;
+            if (!int.TryParse(txt, out v) || v <= 0)
+            {
+                MessageBox.Show("請輸入有效的存入金額 (必須為正整數)", "輸入錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 加入餘額與累計存入
+            balance += v;
+            totalDeposited += v;
+
+            // 清空輸入框並更新介面
+            textBox_deposit.Text = string.Empty;
+            UpdateUi();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            // 取得下注金額
+            int bet = GetSelectedBet();
+            if (bet <= 0) return;
+
+            // 檢查餘額是否足夠（防護）
+            if (balance < bet)
+            {
+                MessageBox.Show("餘額不足，無法下注", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UpdateRotateButtonState();
+                return;
+            }
+
+            // 從 balance 扣除下注金額
+            balance -= bet;
+
+            // 以亂數決定三個轉輪索引 (0..9)
+            n1 = rand.Next(0, 10);
+            n2 = rand.Next(0, 10);
+            n3 = rand.Next(0, 10);
+
+            // 顯示在 pictureBox 上（以數字繪製）
+            pictureBox1.Image = CreateNumberBitmap(n1, pictureBox1.Width, pictureBox1.Height);
+            pictureBox2.Image = CreateNumberBitmap(n2, pictureBox2.Width, pictureBox2.Height);
+            pictureBox3.Image = CreateNumberBitmap(n3, pictureBox3.Width, pictureBox3.Height);
+
+            // 呼叫勝負判斷並計算獎金
+            prize = CalculatePrize(bet, n1, n2, n3);
+
+            // 將獎金加回 balance
+            if (prize > 0)
+            {
+                balance += prize;
+                winCount += 1;
+            }
+
+            totalSpins += 1;
+
+            // 更新介面
+            UpdateUi();
+        }
+
+        private int GetSelectedBet()
+        {
+            if (comboBox1.SelectedItem == null) return 0;
+            var s = comboBox1.SelectedItem.ToString();
+            // 格式預期為 "$1" 等
+            if (s.StartsWith("$")) s = s.Substring(1);
+            int v;
+            if (int.TryParse(s, out v)) return v;
+            return 0;
+        }
+
+        private int CalculatePrize(int bet, int a, int b, int c)
+        {
+            if (a == b && b == c)
+            {
+                return bet * 10; // 頭獎
+            }
+            // 任意兩個相同
+            if (a == b || a == c || b == c)
+            {
+                return bet * 2; // 普獎
+            }
+            return 0; // 未中獎
+        }
+
+        private void UpdateUi()
+        {
+            label_balance.Text = string.Format("餘額: ${0}", balance);
+            label1.Text = string.Format("本次獲得: ${0}", prize);
+
+            // 更新視窗標題以顯示統計（不新增任何元件）
+            this.Text = string.Format("吃角子老虎機 - 總存入:{0} 總旋轉:{1} 累計中獎:{2}", totalDeposited, totalSpins, winCount);
+
+            // 判斷旋轉按鈕狀態
+            UpdateRotateButtonState();
+        }
+
+        private void UpdateRotateButtonState()
+        {
+            int bet = GetSelectedBet();
+            // 如果程式剛啟動 (balance == 0) 或 balance < bet 則停用，否則啟用
+            if (balance == 0 || balance < bet)
+            {
+                button1.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
+        }
+
+        private Bitmap CreateNumberBitmap(int number, int width, int height)
+        {
+            if (width <= 0) width = 100;
+            if (height <= 0) height = 100;
+            Bitmap bmp = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+                string s = number.ToString();
+                // 使用大字型置中繪製數字
+                using (Font f = new Font("微軟正黑體", Math.Max(12, Math.Min(width, height) / 2), FontStyle.Bold, GraphicsUnit.Pixel))
+                using (Brush br = new SolidBrush(Color.Black))
+                {
+                    SizeF sz = g.MeasureString(s, f);
+                    float x = (width - sz.Width) / 2f;
+                    float y = (height - sz.Height) / 2f;
+                    g.DrawString(s, f, br, x, y);
+                }
+            }
+            return bmp;
+        }
+    }
+}

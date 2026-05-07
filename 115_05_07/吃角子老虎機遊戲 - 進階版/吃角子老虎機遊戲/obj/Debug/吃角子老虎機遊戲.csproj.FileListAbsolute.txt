@@ -1,0 +1,22 @@
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\bin\Debug\吃角子老虎機遊戲.exe.config
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\bin\Debug\吃角子老虎機遊戲.exe
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\bin\Debug\吃角子老虎機遊戲.pdb
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.csproj.AssemblyReference.cache
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.Form1.resources
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.Properties.Resources.resources
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.csproj.GenerateResource.cache
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.csproj.CoreCompileInputs.cache
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.exe
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.pdb
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.exe.config
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\bin\Debug\吃角子老虎機遊戲.exe.config
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\bin\Debug\吃角子老虎機遊戲.exe
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\bin\Debug\吃角子老虎機遊戲.pdb
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.csproj.AssemblyReference.cache
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.exe.config
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.Form1.resources
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.Properties.Resources.resources
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.csproj.GenerateResource.cache
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.csproj.CoreCompileInputs.cache
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.exe
+C:\Users\m303\Desktop\115_05_07\吃角子老虎機遊戲 - 進階版\吃角子老虎機遊戲\obj\Debug\吃角子老虎機遊戲.pdb

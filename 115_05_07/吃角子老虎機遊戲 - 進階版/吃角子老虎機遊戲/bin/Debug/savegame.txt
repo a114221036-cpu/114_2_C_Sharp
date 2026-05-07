@@ -1,0 +1,4 @@
+﻿balance=1906
+totalDeposited=2010
+totalSpins=11
+winCount=3
