@@ -23,10 +23,21 @@ namespace Account_Simulator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // 顯示起始餘額
-            balanceLabel.Text = account.AccountNumber + "\n"
-                                + account.Name + "\n"
-                                + account.Balance.ToString("C");
+            // 顯示初始帳戶資訊
+
+        }
+
+        private BankAccount searchAccount(string accountNumber)
+        {
+            foreach (BankAccount account in accounts)
+            {
+                if (account.AccountNumber == accountNumber)
+                {
+                    return account;
+                }
+            }
+            MessageBox.Show("Account not found.");
+            return null; // 如果找不到帳戶，返回 null
         }
 
         private void depositButton_Click(object sender, EventArgs e)
@@ -34,6 +45,11 @@ namespace Account_Simulator
             decimal amount;
             if (decimal.TryParse(depositAmounttextBox.Text, out amount))
             {
+                BankAccount account = searchAccount(depositAccounttextBox.Text); // 取得第一個帳戶
+                if (account == null)
+                {
+                    return;
+                }
                 account.Deposit(amount);
                 balanceLabel.Text = account.AccountNumber + "\n"
                                     + account.Name + "\n"
@@ -51,6 +67,11 @@ namespace Account_Simulator
             decimal amount;
             if (decimal.TryParse(withdrawAmountTextBox.Text, out amount))
             {
+                BankAccount account = searchAccount(depositAccounttextBox.Text); // 取得第一個帳戶
+                if (account == null)
+                {
+                    return;
+                }
                 account.Withdraw(amount);
                 balanceLabel.Text = account.Balance.ToString("C");
                 withdrawAmountTextBox.Clear();
@@ -82,14 +103,16 @@ namespace Account_Simulator
                BankAccount account = new BankAccount(accountNumber, name, amount);
                accounts.Add(account); // 將新帳戶加入列表
                 balanceLabel.Text = account.AccountNumber + "\n"
-                                    + Name + "\n"
+                                    + name + "\n"
                                     + account.Balance.ToString("C");
                 balancetextBox.Clear();
                 nametextBox.Clear();
                 accountNumbertextBox.Clear();
-
-                depositGroupBox.Visible = true;
-                withdrawGroupBox.Visible = true;
+                if (accounts.Count == 1)
+                {
+                    depositGroupBox.Visible = true;
+                    withdrawGroupBox.Visible = true;
+                }
             }
             else
             {
