@@ -73,8 +73,14 @@
     <Compile Include="WithdrawForm.Designer.cs">
       <DependentUpon>WithdrawForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DepositForm.resx">
+      <DependentUpon>DepositForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.Form.resx">
       <DependentUpon>Main.Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenAccountForm.resx">
+      <DependentUpon>OpenAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

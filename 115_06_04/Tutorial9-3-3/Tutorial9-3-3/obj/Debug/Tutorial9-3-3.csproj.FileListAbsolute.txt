@@ -1,0 +1,13 @@
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\bin\Debug\Tutorial9-3-3.exe.config
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\bin\Debug\Tutorial9-3-3.exe
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\bin\Debug\Tutorial9-3-3.pdb
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9-3-3.csproj.AssemblyReference.cache
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9_3_3.Form1.resources
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9_3_3.OpenAccountForm.resources
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9_3_3.Properties.Resources.resources
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9-3-3.csproj.GenerateResource.cache
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9-3-3.csproj.CoreCompileInputs.cache
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9-3-3.exe
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9-3-3.pdb
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9-3-3.exe.config
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_04\Tutorial9-3-3\Tutorial9-3-3\obj\Debug\Tutorial9_3_3.DepositForm.resources

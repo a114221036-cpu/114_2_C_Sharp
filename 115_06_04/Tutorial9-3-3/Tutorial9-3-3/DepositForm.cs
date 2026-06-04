@@ -12,9 +12,74 @@ namespace Tutorial9_3_3
 {
     public partial class DepositForm : Form
     {
+        private List<BankAccount> bankaccounts;
         public DepositForm()
         {
             InitializeComponent();
+            bankaccounts = new List<BankAccount>();
+        }
+
+        // 建構子重載：接受現有的帳戶列表
+        public DepositForm(List<BankAccount> accounts)
+        {
+            InitializeComponent();
+            this.bankaccounts = accounts ?? new List<BankAccount>();
+        }
+
+        // 根據帳號字串在列表中尋找對應的 BankAccount 物件，找不到則回傳 null
+        private BankAccount searchAccount(string accountNumber)
+        {
+            if (string.IsNullOrEmpty(accountNumber) || bankaccounts == null)
+                return null;
+
+            foreach (BankAccount a in bankaccounts)
+            {
+                if (a.AccountNumber == accountNumber)
+                    return a;
+            }
+            return null;
+        }
+
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            // 讀取使用者輸入的帳號與金額
+            string accountNumber = txtAccount.Text.Trim();
+            string amountText = txtAmount.Text.Trim();
+
+            // 在帳戶列表中尋找對應的帳號（使用 searchAccount 方法）
+            var account = this.searchAccount(accountNumber);
+            if (account == null)
+            {
+                MessageBox.Show("找不到指定的帳號。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 解析金額格式
+            if (!decimal.TryParse(amountText, out decimal amount))
+            {
+                MessageBox.Show("請輸入有效的存款金額！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (amount <= 0)
+            {
+                MessageBox.Show("請輸入大於 0 的金額。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 執行存款（BankAccount 類別已負責驗證負值的情況）
+            account.Deposit(amount);
+
+            // 更新畫面顯示結果（使用在設計檔加入的 lblResult）
+            if (this.lblResult != null)
+            {
+                this.lblResult.Text = string.Format("帳號：{0}\r\n姓名：{1}\r\n餘額：{2}",
+                    account.AccountNumber,
+                    account.Name,
+                    account.Balance.ToString("C"));
+            }
+
+            MessageBox.Show("存款完成。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

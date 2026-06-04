@@ -6,6 +6,20 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        // 表單上的介面元件宣告（僅介面，無程式邏輯）
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblInitial;
+        private System.Windows.Forms.TextBox txtAccount;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtInitial;
+        private System.Windows.Forms.Button btnCreateAccount;
+        private System.Windows.Forms.Panel pnlDisplay;
+        // 用於顯示剛開戶客戶資訊的標籤（會在建立帳戶後由程式更新文字）
+        private System.Windows.Forms.Label lblResult;
+        // 離開按鈕（僅介面，無程式邏輯）
+        private System.Windows.Forms.Button btnExit;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -28,10 +42,148 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblInitial = new System.Windows.Forms.Label();
+            this.txtAccount = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtInitial = new System.Windows.Forms.TextBox();
+            this.btnCreateAccount = new System.Windows.Forms.Button();
+            this.pnlDisplay = new System.Windows.Forms.Panel();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.pnlDisplay.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("微軟正黑體", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblTitle.Location = new System.Drawing.Point(27, 14);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(236, 66);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "建立帳戶";
+            // 
+            // lblAccount
+            // 
+            this.lblAccount.AutoSize = true;
+            this.lblAccount.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblAccount.Location = new System.Drawing.Point(30, 80);
+            this.lblAccount.Name = "lblAccount";
+            this.lblAccount.Size = new System.Drawing.Size(128, 45);
+            this.lblAccount.TabIndex = 1;
+            this.lblAccount.Text = "帳號：";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("微軟正黑體", 18F);
+            this.lblName.Location = new System.Drawing.Point(30, 132);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(128, 45);
+            this.lblName.TabIndex = 3;
+            this.lblName.Text = "姓名：";
+            // 
+            // lblInitial
+            // 
+            this.lblInitial.AutoSize = true;
+            this.lblInitial.Font = new System.Drawing.Font("微軟正黑體", 18F);
+            this.lblInitial.Location = new System.Drawing.Point(30, 186);
+            this.lblInitial.Name = "lblInitial";
+            this.lblInitial.Size = new System.Drawing.Size(200, 45);
+            this.lblInitial.TabIndex = 5;
+            this.lblInitial.Text = "開戶金額：";
+            // 
+            // txtAccount
+            // 
+            this.txtAccount.Font = new System.Drawing.Font("微軟正黑體", 16F);
+            this.txtAccount.Location = new System.Drawing.Point(164, 75);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(258, 50);
+            this.txtAccount.TabIndex = 2;
+            // 
+            // txtName
+            // 
+            this.txtName.Font = new System.Drawing.Font("微軟正黑體", 16F);
+            this.txtName.Location = new System.Drawing.Point(164, 133);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(258, 50);
+            this.txtName.TabIndex = 4;
+            // 
+            // txtInitial
+            // 
+            this.txtInitial.Font = new System.Drawing.Font("微軟正黑體", 16F);
+            this.txtInitial.Location = new System.Drawing.Point(215, 189);
+            this.txtInitial.Name = "txtInitial";
+            this.txtInitial.Size = new System.Drawing.Size(207, 50);
+            this.txtInitial.TabIndex = 6;
+            // 
+            // btnCreateAccount
+            // 
+            this.btnCreateAccount.Font = new System.Drawing.Font("微軟正黑體", 14F);
+            this.btnCreateAccount.Location = new System.Drawing.Point(471, 143);
+            this.btnCreateAccount.Name = "btnCreateAccount";
+            this.btnCreateAccount.Size = new System.Drawing.Size(193, 40);
+            this.btnCreateAccount.TabIndex = 7;
+            this.btnCreateAccount.Text = "建立帳戶";
+            this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
+            // 
+            // pnlDisplay
+            // 
+            this.pnlDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDisplay.Controls.Add(this.lblResult);
+            this.pnlDisplay.Location = new System.Drawing.Point(12, 285);
+            this.pnlDisplay.Name = "pnlDisplay";
+            this.pnlDisplay.Size = new System.Drawing.Size(460, 220);
+            this.pnlDisplay.TabIndex = 8;
+            this.pnlDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDisplay_Paint);
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoEllipsis = true;
+            this.lblResult.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.lblResult.Location = new System.Drawing.Point(10, 10);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(436, 196);
+            this.lblResult.TabIndex = 9;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("微軟正黑體", 14F);
+            this.btnExit.Location = new System.Drawing.Point(680, 143);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(120, 40);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "離開";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // OpenAccountForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "OpenAccountForm";
+            this.ClientSize = new System.Drawing.Size(840, 662);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblAccount);
+            this.Controls.Add(this.txtAccount);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.lblInitial);
+            this.Controls.Add(this.txtInitial);
+            this.Controls.Add(this.btnCreateAccount);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.pnlDisplay);
+            this.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.Name = "OpenAccountForm";
+            this.Text = "建立帳戶";
+            this.Load += new System.EventHandler(this.OpenAccountForm_Load);
+            this.pnlDisplay.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

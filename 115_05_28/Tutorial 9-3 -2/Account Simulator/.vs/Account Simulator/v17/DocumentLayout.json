@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115_05_28\\Tutorial 9-3 -2\\Account Simulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115_05_28\\Tutorial 9-3 -2\\Account Simulator\\account simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|c:\\users\\m303\\desktop\\114_2_c_sharp\\115_05_28\\tutorial 9-3 -2\\account simulator\\account simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|solutionrelative:account simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|solutionrelative:account simulator\\bankaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|c:\\users\\m303\\desktop\\114_2_c_sharp\\115_05_28\\tutorial 9-3 -2\\account simulator\\account simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115_05_28\\Tutorial 9-3 -2\\Account Simulator\\account simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2BE4796-88DF-4D63-8845-95AC4436E1EC}|Account Simulator\\Account Simulator.csproj|solutionrelative:account simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -26,8 +26,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -61,7 +65,7 @@
               "RelativeDocumentMoniker": "Account Simulator\\Form1.cs",
               "ToolTip": "C:\\Users\\m303\\Desktop\\114_2_C_Sharp\\115_05_28\\Tutorial 9-3 -2\\Account Simulator\\Account Simulator\\Form1.cs",
               "RelativeToolTip": "Account Simulator\\Form1.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAYwGkAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-29T01:54:24.446Z",
               "EditorCaption": ""
