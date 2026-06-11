@@ -1,0 +1,10 @@
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.csproj.AssemblyReference.cache
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.Properties.Resources.resources
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.csproj.GenerateResource.cache
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.csproj.CoreCompileInputs.cache
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\bin\Debug\摩斯密碼轉換器.exe.config
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\bin\Debug\摩斯密碼轉換器.exe
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\bin\Debug\摩斯密碼轉換器.pdb
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.exe
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.pdb
+C:\Users\m303\Desktop\114_2_C_Sharp\115_06_11\摩斯密碼轉換器\摩斯密碼轉換器\obj\Debug\摩斯密碼轉換器.exe.config
